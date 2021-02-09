@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">* {
+  margin: 0;
+  font-family: "josefin slab", serif;
+  line-height: 1.5;
+}
+
+body {
+  /* font-size: 10rem; */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 70px;
+  color: #1881ac;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 45px;
+}
+
+p {
+  /* font-size: 31px;
+  line-height: 1.25; */
+  font-weight: 500;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.active {
+  color: #fff !important;
+  background-color: #1881ac;
+}
+</style><style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,400;0,700;1,400&display=swap);</style><style type="text/css">.app__body {
+  display: flex;
+}
+</style><style type="text/css">.btn {
+  margin: 40px auto;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Admin */
+
+.btn__admin {
+  width: auto;
+  margin: 0 10px;
+  background-color: transparent;
+  opacity: 0.9;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.btn__admin:hover {
+  color: #1881ac;
+  background-color: #fff;
+}
+
+/* Available */
+
+.btn__available {
+  padding: 20px;
+  background-color: #1983af;
+  border: none;
+  border-radius: 50px;
+  font-size: 24px;
+  color: white;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.btn__available:hover {
+  background-color: #f8a895;
+  color: #4b6169;
+  transition: all 0.2s ease;
+}
+
+/* Booking */
+
+.btn__booking {
+  width: 100%;
+  background-color: #1881ac;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.btn__booking:hover {
+  background-color: #27b1e7;
+}
+
+.btn__submit {
+  background-color: #67aeaa;
+  color: #fff;
+  border: 1px solid #67aeaa;
+  font-size: 20px;
+  padding: 5px 20px;
+}
+
+.btn__submit:hover {
+  background-color: #34a57f;
+  border: 1px solid #34a57f;
+}
+
+.btn__edit {
+  background-color: #eddfb9;
+  color: #fff;
+  border: 1px solid #eddfb9;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.btn__edit:hover {
+  background-color: #dfbc5c;
+}
+
+.btn__delete {
+  background-color: #f8a895;
+  color: #fff;
+  border: 1px solid #f8a895;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.btn__delete:hover {
+  background-color: tomato;
+}
+
+.btn__add {
+  background-color: #66ada9;
+  color: #fff;
+  border: 1px solid #66ada9;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.btn__add:hover {
+  background-color: #fff;
+  color: #66ada9;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: #cd746c;
+  border: 1px solid #cd746c;
+}
+
+.disabled:hover {
+  background-color: #cd746c;
+  border: 1px solid #cd746c;
+}
+</style><style type="text/css">.input__group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.input__control {
+  font-size: 25px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.input__errors {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #cd746c;
+  color: #fff;
+}
+</style><style type="text/css">.hutForm {
+  width: 100%;
+}
+
+.hutForm__heading {
+  display: flex;
+  padding: 40px;
+  justify-content: space-evenly;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hutForm__headingInput {
+  height: 240px;
+  width: 180px;
+  background-color: #fff;
+}
+
+.hutForm__headingTitle {
+  height: 240px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+}
+
+.hutForm__headingTitle input {
+  border: none;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  background-color: transparent;
+  color: #2a2a2a;
+}
+
+.hutForm__inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.hutForm__inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  background-color: #ddd;
+  background-position: center center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hutForm__inputfile:focus + label,
+.hutForm__inputfile + label:hover {
+  transform: scale(1.09);
+  opacity: 0.7;
+  transition: all 0.4s ease 0s;
+}
+
+.hutForm__headingTitle:hover {
+  transform: scale(1.09);
+  opacity: 0.7;
+  transition: all 0.4s ease 0s;
+}
+</style><style type="text/css">.adminSidebar {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1881ac;
+}
+
+.adminSidebar__header {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.adminSidebar__header img {
+  width: 65px;
+  height: 65px;
+  background-color: transparent;
+}
+
+.adminSidebar__header h5 {
+  color: #1881ac;
+  font-size: 22px;
+}
+
+.adminSidebar__list {
+  padding: 10px;
+}
+
+.adminSidebar__listItems {
+  background-color: rgba(255, 255, 255, 0.4);
+  list-style: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.adminSidebar__listItem {
+  color: #fff;
+  margin: 5px 0;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.adminSidebar__listItem p {
+  margin-left: 20px;
+  color: #fff;
+}
+
+.adminSidebar__listItem:hover {
+  background-color: #1881ac;
+}
+</style><style type="text/css"></style><style type="text/css">.booking {
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.booking__description {
+  color: #1983af;
+  width: 80%;
+  margin: auto;
+  padding: 40px;
+}
+
+.booking__main {
+  padding: 20px;
+}
+
+.booking__main h1 {
+  text-align: left;
+  font-size: 24px;
+  color: #1983af;
+  padding-bottom: 20px;
+}
+
+.booking__main hr {
+  opacity: 0.5;
+}
+
+.booking__dates {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+}
+
+.booking__button {
+  display: flex;
+  height: auto;
+  padding: 0 5px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #fff;
+  background-color: #1983af;
+  border: 1px solid #fff;
+}
+
+.booking__controls {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.controls__up {
+    display: flex;
+    align-items: center;
+}
+
+.controls__down {
+    display: flex;
+    align-items: center;
+}
+
+.controls__up:hover {
+    background-color: #fff;
+}
+
+.controls__up:hover .MuiSvgIcon-root {
+    color: #1983af;
+}
+
+.controls__down:hover {
+    background-color: #fff;
+}
+
+.controls__down:hover .MuiSvgIcon-root {
+    color: #1983af;
+}
+
+.booking__hutcard {
+  height: 90vh;
+  margin: 20px 0;
+  display: flex;
+  border: 1px solid #ccc;
+}
+
+.booking__hutcard img {
+  width: 66.669%;
+  object-fit: cover;
+}
+
+.hutcard__bottom {
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hutcard__right {
+  width: 33.339%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hutcard__right > h1 {
+    padding: 20px 41px;
+}
+
+.hutcard__price {
+  margin: 5px 41px;
+  padding: 0 10px;
+  border-left: 1px solid #ccc;
+  display: flex;
+
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: left;
+}
+
+.hutcard__price p {
+  font-size: 12px;
+  color: #1983af;
+}
+
+.hutcard__price h1 {
+  font-size: 40px;
+  font-weight: 300;
+  padding-bottom: 0;
+}
+
+.hutcard__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+}
+</style><style type="text/css">.cartitem {
+  box-sizing: border-box;
+  display: flex;
+  padding: 40px;
+  margin-bottom: 2px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.cartitem__tag {
+  box-sizing: border-box;
+  display: flex;
+  background-color: #1881ac;
+  align-items: center;
+  padding: 20px;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  margin-right: 30px;
+  color: #fff;
+}
+
+.cartitem__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.cartitem__body p {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  pointer-events: painted;
+}
+
+.cartitem__close {
+  position: relative;
+  top: -20px;
+  right: -25px;
+  opacity: 0;
+}
+
+.cartitem__close > .MuiSvgIcon-root {
+  cursor: pointer;
+  color: #333;
+}
+
+.show__close {
+  opacity: 0.9;
+  transition: opacity 0.2s ease 0s;
+}
+</style><style type="text/css">.cartitems {
+  background-color: #ccc;
+  padding: 0;
+}
+</style><style type="text/css">.cart {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #fff;
+  opacity: 0.9;
+  z-index: 100;
+}
+
+.cart__empty {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cart__header {
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+  background-color: #111;
+}
+
+.cart__header > h1 {
+  position: relative;
+  left: 30%;
+}
+
+.cart__header > .MuiSvgIcon-root {
+  cursor: pointer;
+}
+
+.cart__body {
+  height: 60%;
+  width: 100%;
+}
+
+.cart__cartitems {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.cart__footer {
+  height: 20%;
+}
+
+.hidden {
+  opacity: 1;
+  left: 0;
+}
+</style><style type="text/css">.dashboard {
+  background-color: #1881ac;
+  width: 75%;
+  opacity: 0.9;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.dashboard__header {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+</style><style type="text/css">.hutdetails {
+  background-image: url(/static/media/website-background.70886872.jpg);
+  width: 100%;
+}
+
+p {
+  font-size: 23px;
+  line-height: 1.25;
+  color: #1d1d1d;
+  margin-top: 30px;
+}
+
+h3 {
+  font-size: 23px;
+  font-weight: bold;
+  color: #1881ac;
+  margin-top: 30px;
+}
+
+.hutdetails__content {
+  width: 75%;
+  background-color: #fff;
+  margin: auto;
+  padding: 40px;
+}
+
+.hutdetails__heading {
+  display: flex;
+  width: 75%;
+  height: 440px;
+  padding-bottom: 40px;
+  margin: auto;
+  justify-content: center;
+}
+
+.hutdetails__mainImage {
+  position: relative;
+  left: 50px;
+  top: 100px;
+  width: 216px;
+  height: 284px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 100;
+}
+
+.hutdetails__title {
+  position: relative;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 238px;
+  height: 196px;
+  color: #fff;
+  z-index: 200;
+}
+
+.hutdetails__secImage {
+  position: relative;
+  top: 150px;
+  left: -20px;
+  width: 223px;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 300;
+}
+
+.hutdetails__thrImage {
+  position: relative;
+  top: 20px;
+  right: 50px;
+  width: 212px;
+  height: 266px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 400;
+}
+.hutdetails__button {
+  display: flex;
+  justify-content: center;
+}
+</style><style type="text/css">h3 {
+  font-size: 35px;
+  font-weight: 500;
+  margin: 20px;
+  text-align: center;
+}
+
+li {
+  font-size: 30px;
+}
+
+p {
+  font-size: 23px;
+}
+
+.hutManagement {
+  width: 100%;
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-size: cover;
+}
+
+.hutManagement__container {
+  padding: 20px;
+  width: 75%;
+  margin: auto;
+  background-color: #fff;
+}
+
+.hutManagement__img {
+  margin: 40px auto;
+  width: 391px;
+  height: 516px;
+}
+
+.hutManagement__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hutManagement__contact {
+  text-align: center;
+}
+</style><style type="text/css">.imageslider {
+  background-color: #fff;
+  padding: 40px 60px;
+  box-sizing: border-box;
+}
+
+.imageslider__container {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.imageslider__image {
+  height: 476px;
+  width: 476px;
+  margin: 20px;
+}
+
+.imageslider__image > img {
+  object-fit: cover;
+  width: 476px;
+  height: 100%;
+  border-radius: 250px;
+}
+
+.imageslider__left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  left: 0;
+}
+
+.imageslider__right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  right: 0;
+}
+</style><style type="text/css"></style><style type="text/css">.home__heading {
+  padding: 80px 0;
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.home__content {
+  background-color: #fff;
+  color: #1881ac;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.home__imgslider {
+  overflow-x: hidden;
+}
+
+.home a {
+  color: #1a83b0;
+}
+
+.home__rates {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+}
+
+.home__ratescard > h1 {
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.home__ratesleft {
+  background-image: url("/static/media/Wells-beach-huts .c4afc540.jpg");
+  background-size: cover;
+  background-position: left;
+  flex: 0.33 1;
+}
+
+.home__ratescard {
+  padding: 40px;
+  background-color: #d0e6e5;
+  flex: 0.33 1;
+  text-align: center;
+  border-left: 20px solid #fff;
+  border-right: 20px solid #fff;
+}
+
+.home__ratesright {
+  background-image: url("/static/media/Wells-beach-huts .c4afc540.jpg");
+  background-size: cover;
+  background-position: right;
+  flex: 0.33 1;
+}
+
+.home__contact {
+  background-color: #fff;
+  height: 100vh;
+  padding: 80px 0;
+}
+
+.home__contactcontainer {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 100%;
+}
+
+.home__contactform {
+  background-color: #f5f6dd;
+  padding: 40px;
+  flex: 0.5 1;
+  text-align: center;
+}
+
+.home__contactimage {
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex: 0.5 1;
+}
+
+.home__gallery {
+  padding: 60px;
+  text-align: center;
+}
+</style><style type="text/css">h4 {
+  font-size: 45px;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: #1881ac;
+}
+
+.loginForm {
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  color: #1881ac;
+}
+
+.loginForm__container {
+  width: 60%;
+  background-color: #fff;
+  padding: 40px;
+  margin: 80px auto;
+}
+</style><style type="text/css">.linksComponent {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.linksComponent__links {
+  color: #1881ac;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 10px 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.linksComponent__links:hover {
+  background-color: #f7f6da;
+  transition: background-color 0.4s ease 0s;
+}
+</style><style type="text/css">.iconbox {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.iconbox .MuiSvgIcon-root {
+  margin: 5px;
+  background-color: #fff;
+  color: #1881ac;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.iconbox .MuiSvgIcon-root:hover {
+  background-color: #1881ac;
+  color: #fff;
+  transform: scale(1.09);
+  transition: all 0.4s ease 0s;
+}
+
+.iconbox__count {
+  color: #fff;
+  position: relative;
+  right: 32px;
+  top: 9px;
+}
+
+.iconbox > .MuiSvgIcon-root:hover + p {
+  color: #1881ac;
+}
+</style><style type="text/css">.navbar {
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar__logo {
+  height: auto;
+  width: 229px;
+}
+
+.navbar__logo > img {
+  position: center center;
+  width: 100%;
+  object-fit: contain;
+}
+
+.navbar__bottom {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.navbar__iconbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+</style><style type="text/css">.navPannel {
+  padding: 20px;
+  width: 25%;
+  background-color: #fff;
+  border: 1px solid #1983af;
+  height: auto;
+}
+</style><style type="text/css"></style><style type="text/css">.hut p {
+  font-size: 22px;
+  text-align: left;
+  cursor: pointer;
+  color: #1d1d1d;
+}
+
+.hut img {
+  cursor: pointer;
+  width: 228px;
+  height: 300px;
+}
+
+.hut:hover {
+  transform: scale(1.09);
+  opacity: 0.75;
+  transition: all 0.2s ease 0s;
+}
+</style><style type="text/css">.huts {
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+p {
+  color: #1d1d1d;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.huts__container {
+  padding: 40px;
+  margin: auto;
+  width: 80%;
+  text-align: left;
+  background-color: #fff;
+  text-align: center;
+}
+
+.huts > h1 {
+  font-family: "josefin slab", serif;
+  font-weight: 500;
+}
+
+.huts__hut {
+  display: flex;
+  padding: 40px;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.huts__hut a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 300;
+}
+</style><style type="text/css">h4 {
+  font-size: 45px;
+}
+
+.registerForm {
+  background-image: url(/static/media/website-background.70886872.jpg);
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  color: #1881ac;
+}
+
+.registerForm__container {
+  width: 60%;
+  background-color: #fff;
+  padding: 40px;
+  margin: 80px auto;
+}
+</style><style type="text/css"></style><style type="text/css"></style><style type="text/css"></style><style type="text/css">h1 {
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+}
+
+li {
+  font-size: 22px;
+}
+
+.terms {
+  background-image: url(/static/media/website-background.70886872.jpg);
+}
+
+.terms__container {
+  width: 75%;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+}
+</style><style type="text/css"></style><style type="text/css">.appTest__success {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+</style><style data-jss="" data-meta="MuiSvgIcon">
+.MuiSvgIcon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #3f51b5;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #f50057;
+}
+.MuiSvgIcon-colorAction {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiSvgIcon-colorError {
+  color: #f44336;
+}
+.MuiSvgIcon-colorDisabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: inherit;
+}
+.MuiSvgIcon-fontSizeSmall {
+  font-size: 1.25rem;
+}
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div><div class="adminSidebar"><div class="adminSidebar__header"><img src="./React App_files/Logo.a3cc4aa3.png" alt="logo"><h5>The Happy Huts</h5></div><div class="adminSidebar__list"><ul class="adminSidebar__listItems"><a href="http://localhost:3000/admin/bookings"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path></svg><p>Bookings</p></li></a><a href="http://localhost:3000/admin/manage-huts"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg><p>Manage Huts</p></li></a><a href="http://localhost:3000/admin/manage-shop"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 8.89l-1.05-4.37c-.22-.9-1-1.52-1.91-1.52H5.05c-.9 0-1.69.63-1.9 1.52L2.1 8.89c-.24 1.02-.02 2.06.62 2.88.08.11.19.19.28.29V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.94c.09-.09.2-.18.28-.28.64-.82.87-1.87.62-2.89zm-2.99-3.9l1.05 4.37c.1.42.01.84-.25 1.17-.14.18-.44.47-.94.47-.61 0-1.14-.49-1.21-1.14L16.98 5l1.93-.01zM13 5h1.96l.54 4.52c.05.39-.07.78-.33 1.07-.22.26-.54.41-.95.41-.67 0-1.22-.59-1.22-1.31V5zM8.49 9.52L9.04 5H11v4.69c0 .72-.55 1.31-1.29 1.31-.34 0-.65-.15-.89-.41-.25-.29-.37-.68-.33-1.07zm-4.45-.16L5.05 5h1.97l-.58 4.86c-.08.65-.6 1.14-1.21 1.14-.49 0-.8-.29-.93-.47-.27-.32-.36-.75-.26-1.17zM5 19v-6.03c.08.01.15.03.23.03.87 0 1.66-.36 2.24-.95.6.6 1.4.95 2.31.95.87 0 1.65-.36 2.23-.93.59.57 1.39.93 2.29.93.84 0 1.64-.35 2.24-.95.58.59 1.37.95 2.24.95.08 0 .15-.02.23-.03V19H5z"></path></svg><p>Manage Shop</p></li></a><a href="http://localhost:3000/admin/gift-vouchers"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"></path></svg><p>Gift Vouchers</p></li></a><a href="http://localhost:3000/admin/users"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg><p>Users</p></li></a><a href="http://localhost:3000/admin/emails"><li class="adminSidebar__listItem"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg><p>Emails</p></li></a></ul></div></div><div class="app"><nav class="navbar"><div class="navbar__top"><div class="navbar__logo"><img src="./React App_files/Logo.a3cc4aa3.png" alt="Logo"></div><div class="navbar__iconbox"><div class="iconbox"><a href="http://localhost:3000/login"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87z"></path><circle cx="9" cy="8" r="4" fill-rule="evenodd"></circle><path fill-rule="evenodd" d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24C14.5 5.27 15 6.58 15 8s-.5 2.73-1.33 3.76c.42.14.86.24 1.33.24zM9 13c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></svg></a><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"></path></svg><p class="iconbox__count"></p><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"></path></svg><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg></div></div></div><div class="navbar__bottom"><ul class="linksComponent"><li><a aria-current="page" class="linksComponent__links active" href="http://localhost:3000/">Home</a></li><li><a class="linksComponent__links" href="http://localhost:3000/our-huts">Our Huts</a></li><li><a class="linksComponent__links" href="http://localhost:3000/shop">Gift Vouchers</a></li><li><a class="linksComponent__links" href="http://localhost:3000/hut-management">Hut Management</a></li><li><a class="linksComponent__links" href="http://localhost:3000/terms-and-faqs">Terms and FAQs</a></li></ul></div></nav><div class="app__body"><div class="home"><div class="home__heading"><div class="home__content"><p>A selection of beautifully finished beach huts available to hire on the award winning beach at Wells-Next-The-Sea. Make your visit to the north Norfolk coast extra special and hire one of our delightful huts.</p><br><p>All the huts are fully equipped with a selection of outdoor chairs, windbreaks, beach toys and a gas stove to make yourself a cuppa, guaranteed to enhance your visit to the seaside come rain or shine...</p><br><p>Please note the huts are for day use only, pack up a picnic and it will make the perfect base for your beach day.</p><br><p>Have a look under <span><a href="http://localhost:3000/our-huts">Our Huts</a></span> to see what we have to offer and to check availability.</p></div></div><div class="home__imgslider"></div><div class="home__rates"><div class="home__ratesleft"></div><div class="home__ratescard"><h1>Prices</h1><p>April, May, June &amp; September £50 per day</p><br><p>July &amp; August</p><p>£60 per day</p><br><p>October - End of March 2021</p><p>£25 per day</p><br><p>October 2021 - End of March</p><p>2022</p><p>£30 per day</p><a href="http://localhost:3000/book">Book Now</a></div><div class="home__ratesright"></div></div><div class="home__contact"><div class="home__contactcontainer"><div class="home__contactform"><h1>Get in touch...</h1><p>Jodie</p><p>thehappyhut128@gmail.com</p><p>07557402652</p></div><div class="home__contactimage"></div></div></div><div class="home__map"><div class="map"><iframe width="90%" height="450" frameborder="0" src="./React App_files/place.html" allowfullscreen="" style="border: 0px; margin-left: 5%;"></iframe></div></div><div class="home__testimonials"></div><div class="home__gallery"><h1>Gallery</h1><p>We love to see what you get up to at The Happy Hut's, feel free to tag us @thehappyhuts on Instagram! </p></div></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/1.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.0223225fc8ff685c7f21.hot-update.js"></script>
+
+</body></html>
